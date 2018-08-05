@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Swt
+Bundle-SymbolicName: org.prabhu.rcp.swt;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.ui
+Automatic-Module-Name: org.prabhu.rcp.swt
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
