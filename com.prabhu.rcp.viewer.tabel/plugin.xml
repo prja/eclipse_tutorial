@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="com.prabhu.rcp.viewer.tabel.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="com.prabhu.rcp.viewer.tabel.Perspective"
+            name="Perspective"
+            id="com.prabhu.rcp.viewer.tabel.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="com.prabhu.rcp.viewer.tabel.View"
+            name="View"
+            id="com.prabhu.rcp.viewer.tabel.view"
+            inject="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="*">
+         <view
+               id="com.prabhu.rcp.viewer.tabel.view"
+               minimized="false"
+               relationship="left"
+               standalone="true"
+               relative="org.eclipse.ui.editorss">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu">
+         <menu
+               label="File">
+            <command
+                  commandId="org.eclipse.ui.file.exit"
+                  label="Exit">
+            </command>
+         </menu>
+         <command
+               commandId="com.prabhu.rcp.viewer.tabel.Print"
+               label="Print Model"
+               style="push">
+         </command>
+         <command
+               commandId="com.prabhu.rcp.viewer.tabel.AddEmp"
+               label="Add Employee"
+               style="push">
+         </command>
+         <command
+               commandId="com.prabhu.rcp.viewer.tabel.DeleteEmp"
+               label="Delete Employee"
+               style="push">
+         </command>
+         <command
+               commandId="com.prabhu.rcp.viewer.tabel.CopyToClipboard"
+               id="com.prabhu.rcp.viewer.tabel.CopyToClipboard"
+               label="Copy To Clipboard"
+               style="push">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:com.prabhu.rcp.viewer.tabel.view">
+         <command
+               commandId="com.prabhu.rcp.viewer.tabel.CopyToClipboard"
+               id="com.prabhu.rcp.viewer.tabel.CopyToClipboard"
+               label="Copy to Clipboard"
+               style="push">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="true"
+            locationURI="popup:com.prabhu.rcp.viewer.tabel.view">
+         <command
+               commandId="com.prabhu.rcp.viewer.tabel.CopyToClipboard"
+               id="com.prabhu.rcp.viewer.tabel.CopyToClipboard"
+               label="Copy to Clipboard"
+               style="push">
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            name="RCP Application"
+            application="com.prabhu.rcp.viewer.tabel.application">
+         <property
+               name="windowImages"
+               value="icons/eclipse16.png,icons/eclipse32.png,icons/eclipse48.png,icons/eclipse64.png, icons/eclipse128.png,icons/eclipse256.png,icons/eclipse512.png">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.prabhu.rcp.viewer.table.commands.Print"
+            id="com.prabhu.rcp.viewer.tabel.Print"
+            name="Print">
+      </command>
+      <command
+            defaultHandler="org.prabhu.rcp.viewer.table.commands.AddEmployee"
+            id="com.prabhu.rcp.viewer.tabel.AddEmp"
+            name="Add Employee">
+      </command>
+      <command
+            defaultHandler="org.prabhu.rcp.viewer.table.commands.DeleteEmployee"
+            id="com.prabhu.rcp.viewer.tabel.DeleteEmp"
+            name="Delete Employee">
+      </command>
+      <command
+            defaultHandler="org.prabhu.rcp.viewer.table.commands.CopyClipboard"
+            id="com.prabhu.rcp.viewer.tabel.CopyToClipboard"
+            name="Copy Employee to Clipboard">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="com.prabhu.rcp.viewer.tabel.handler1">
+      </handler>
+   </extension>
+
+</plugin>
