@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="com.prabhu.rcp.dialog.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="com.prabhu.rcp.dialog.Perspective"
+            name="RCP Perspective"
+            id="com.prabhu.rcp.dialog.perspective">
+      </perspective>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            name="Hello RCP"
+            application="com.prabhu.rcp.dialog.application">
+         <property
+               name="windowImages"
+               value="icons/eclipse16.png,icons/eclipse32.png,icons/eclipse48.png,icons/eclipse64.png, icons/eclipse128.png,icons/eclipse256.png,icons/eclipse512.png">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="com.prabhu.rcp.dialog.handler.DialogExample"
+            id="com.prabhu.rcp.dialog.dialogExample"
+            name="Show Example dialog">
+      </command>
+      <command
+            defaultHandler="com.prabhu.rcp.dialog.handler.MFDHandler"
+            id="com.prabhu.rcp.dialog.myfirstdialog"
+            name="My First Dailog">
+      </command>
+      <command
+            defaultHandler="com.prabhu.rcp.dialog.handler.MFTADHandler"
+            id="com.prabhu.rcp.dialog.mftad"
+            name="My First Title Area Dailog">
+      </command>
+      <command
+            defaultHandler="com.prabhu.rcp.dialog.handler.MyFirstWizardHandler"
+            id="com.prabhu.rcp.dialog.myfirstWizard"
+            name="My First Wizard">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.eclipse.ui.main.menu">
+         <command
+               commandId="com.prabhu.rcp.dialog.dialogExample"
+               id="com.prabhu.rcp.dialog.dialogExample"
+               label="Show Example Dialog"
+               style="push">
+         </command>
+         <command
+               commandId="com.prabhu.rcp.dialog.myfirstdialog"
+               label="My First Dailog"
+               style="push">
+         </command>
+         <command
+               commandId="com.prabhu.rcp.dialog.mftad"
+               id="com.prabhu.rcp.dialog.mftad"
+               label="My First Title Area Dailog"
+               style="push">
+         </command>
+         <command
+               commandId="com.prabhu.rcp.dialog.myfirstWizard"
+               id="com.prabhu.rcp.dialog.myfirstWizard"
+               label="My First Wizard"
+               style="push">
+         </command>
+      </menuContribution>
+   </extension>
+
+</plugin>
