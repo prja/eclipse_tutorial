@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="org.prabhu.rcp.preference.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="org.prabhu.rcp.preference.Perspective"
+            name="Perspective"
+            id="org.prabhu.rcp.preference.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="org.prabhu.rcp.preference.View"
+            name="View"
+            id="org.prabhu.rcp.preference.view"
+            inject="true">
+      </view>
+      <view
+            class="org.prabhu.rcp.preference.SecurePrefView"
+            id="org.prabhu.rcp.preference.securepref"
+            name="Secure Preference Demo"
+            restorable="true">
+      </view>
+      <view
+            class="org.prabhu.rcp.preference.ShowInstanceTypeView"
+            id="org.prabhu.rcp.preference.instancetypeview"
+            name="Demo Instance type"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="*">
+         <view
+               id="org.prabhu.rcp.preference.view"
+               minimized="false"
+               relationship="left"
+               standalone="true"
+               relative="org.eclipse.ui.editorss">
+         </view>
+         <view
+               id="org.prabhu.rcp.preference.securepref"
+               minimized="false"
+               relationship="right"
+               relative="org.eclipse.ui.editorss">
+         </view>
+         <view
+               id="org.prabhu.rcp.preference.instancetypeview"
+               minimized="false"
+               relationship="bottom"
+               relative="org.eclipse.ui.editorss">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu">
+         <menu
+               label="File">
+            <command
+                  commandId="org.eclipse.ui.file.exit"
+                  label="Exit">
+            </command>
+         </menu>
+         <command
+               commandId="org.prabhu.rcp.preference.showpref"
+               label="Show Preference"
+               style="push">
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            name="RCP Application"
+            application="org.prabhu.rcp.preference.application">
+         <property
+               name="windowImages"
+               value="icons/eclipse16.png,icons/eclipse32.png,icons/eclipse48.png,icons/eclipse64.png, icons/eclipse128.png,icons/eclipse256.png,icons/eclipse512.png">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.prabhu.rcp.preference.RTInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.prabhu.rcp.preference.MyPreferencePage"
+            id="org.prabhu.rcp.preference.page"
+            name="MyPrefPage">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.prabhu.rcp.preference.ShowPreferences"
+            id="org.prabhu.rcp.preference.showpref"
+            name="Show Preference">
+      </command>
+   </extension>
+
+</plugin>
